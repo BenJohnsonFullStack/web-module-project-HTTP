@@ -18,9 +18,14 @@ const EditMovieForm = (props) => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:9000/api/movies/${id}`).then((res) => {
-      console.log(res);
-    });
+    axios
+      .get(`http://localhost:9000/api/movies/${id}`)
+      .then((res) => {
+        setMovie(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const handleChange = (e) => {
